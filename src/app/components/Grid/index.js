@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import AddTileButton from "../AddTileButton";
 import Tile from "../Tile";
-import {addTile, removeTile} from '../../features/Grid/actions'
+import {addTileWithChecking, removeTile} from '../../features/Grid/actions'
 
 const colors = ["red", "blue", "pink", "yellow", "gray"];
 const Grid = () => {
@@ -17,7 +17,7 @@ const Grid = () => {
       <br />
       <div>
         {colors.map((color) => {
-          return <AddTileButton key={color} color={color} onClick={_ => dispatch(addTile(color))} />;
+          return <AddTileButton key={color} color={color} onClick={_ => dispatch(addTileWithChecking(color))} />;
         })}
       </div>
     </div>

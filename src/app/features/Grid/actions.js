@@ -14,4 +14,12 @@ const removeTile = (id) => {
   };
 };
 
-export { addTile, removeTile };
+const addTileWithChecking = (color) => {
+  return function (dispatch, getState) {
+    if (getState().grid.length < 5) {
+      dispatch(addTile(color));
+    }
+  };
+};
+
+export { addTile, removeTile, addTileWithChecking };
