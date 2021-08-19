@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import AddTileButton from "../AddTileButton";
 import Tile from "../Tile";
+import {addTile, removeTile} from '../../features/Grid/actions'
 
 const colors = ["red", "blue", "pink", "yellow", "gray"];
 const Grid = () => {
@@ -10,13 +11,13 @@ const Grid = () => {
     <div>
       <div style={{ maxWidth: 400, overflow: "hidden" }}>
         {gridTiles.map((tile, index) => {
-          return <Tile {...tile} key={index} onDoubleClick={_ => dispatch({type: 'REMOVE_TILE', id: tile.id})} />;
+          return <Tile {...tile} key={index} onDoubleClick={_ => dispatch(removeTile(tile.id))} />;
         })}
       </div>
       <br />
       <div>
         {colors.map((color) => {
-          return <AddTileButton key={color} color={color} onClick={_ => dispatch({type: 'ADD_TILE', color})} />;
+          return <AddTileButton key={color} color={color} onClick={_ => dispatch(addTile(color))} />;
         })}
       </div>
     </div>
